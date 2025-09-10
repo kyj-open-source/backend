@@ -12,12 +12,15 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const search_module_1 = require("./search/search.module");
 const prisma_module_1 = require("../prisma/prisma.module");
+const skills_module_1 = require("./skills/skills.module");
+const users_module_1 = require("./users/users.module");
+const jobs_module_1 = require("./jobs/jobs.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [search_module_1.SearchModule, prisma_module_1.PrismaModule],
+        imports: [search_module_1.SearchModule, prisma_module_1.PrismaModule, skills_module_1.SkillsModule, users_module_1.UsersModule, jobs_module_1.JobsModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
