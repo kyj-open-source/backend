@@ -226,5 +226,9 @@ main()
     process.exit(1);
   })
   .finally(async () => {
+<<<<<<< HEAD
+=======
+    // Close the Prisma Client connection
+>>>>>>> origin/main
     await prisma.$disconnect();
   });
