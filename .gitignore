@@ -7,15 +7,19 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Node modules and build artifacts
+node_modules/
+dist/
+dist-ssr/
+build/
 
-# Editor directories and files
-.vscode/*
+# Environment files
+*.env
+
+# Editor files
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -23,9 +27,4 @@ dist-ssr
 *.sln
 *.sw?
 
-**.env
-.env
-.node_modules
-dist
-build
-.vscode
+# Optional: ignore package lock in node_modules if necessary
