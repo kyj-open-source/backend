@@ -6,9 +6,17 @@ import { UsersModule } from "./users/users.module";
 import { JobsModule } from "./jobs/jobs.module";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { ResourcesModule } from "./resources/resources.module";
 
 @Module({
-  imports: [SearchModule, PrismaModule, SkillsModule, UsersModule, JobsModule],
+  imports: [
+    SearchModule,
+    PrismaModule,
+    SkillsModule,
+    UsersModule,
+    JobsModule,
+    ResourcesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
