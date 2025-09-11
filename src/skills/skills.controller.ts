@@ -1,4 +1,9 @@
-import { Controller, Get, Query } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  InternalServerErrorException,
+  Query,
+} from "@nestjs/common";
 import { SkillsService } from "./skills.service";
 
 @Controller("skills")
@@ -7,6 +12,12 @@ export class SkillsController {
 
   @Get()
   searchSkills(@Query("q") query: string) {
-    return this.skillsService.search(query);
+    try {
+      return this.skillsService.search(query);
+    } catch (error) {
+      throw new InternalServerErrorException(
+        `Failed to search skills: ${error}`,
+      );
+    }
   }
 }

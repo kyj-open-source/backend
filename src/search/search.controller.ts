@@ -1,12 +1,19 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { SearchService } from './search.service';
+import { Controller, Get, Query } from "@nestjs/common";
+import { SearchService } from "./search.service";
+import { IsNotEmpty, IsString } from "class-validator";
 
-@Controller('search')
+class SearchQueryDto {
+  @IsString()
+  @IsNotEmpty()
+  q: string;
+}
+
+@Controller("search")
 export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
   @Get()
-  async performSearch(@Query('q') query: string) {
-    return this.searchService.searchAll(query);
+  async performSearch(@Query() query: SearchQueryDto) {
+    return this.searchService.searchAll(query.q);
   }
 }

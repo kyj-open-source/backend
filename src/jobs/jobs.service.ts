@@ -43,4 +43,11 @@ export class JobsService {
       throw error;
     }
   }
+
+  async getSavedJobs(userId: string) {
+    return this.prisma.savedJob.findMany({
+      where: { userId },
+      include: { job: true },
+    });
+  }
 }
