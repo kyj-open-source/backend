@@ -7,7 +7,7 @@ export class SearchService {
   constructor(private prisma: PrismaService) {}
 
   async searchAll(query: string) {
-    const userId = "d9a8b7a6-e5f4-g3h2-i1j0-k9l8m7n6o5p4";
+    const userId = "58d0816f-88d6-424a-8438-429c74f9a6e2";
 
     if (!query) {
       return { jobs: [], resources: [] };
@@ -27,7 +27,8 @@ export class SearchService {
     //Create sets for faster lookup (O(1) complexity)
     const savedJobIds = new Set(savedJobs.map((job) => job.jobId));
     const savedResourceIds = new Set(
-      savedResources.map((item) => item.resourceId),
+      // eslint-disable-next-line prettier/prettier
+      savedResources.map((item) => item.resourceId)
     );
 
     // Define the search filter to be used for both jobs and resources
