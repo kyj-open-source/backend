@@ -7,6 +7,11 @@ async function bootstrap() {
   app.setGlobalPrefix("api");
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
-  await app.listen(process.env.PORT ?? 3000);
+  try {
+    await app.listen(process.env.PORT ?? 3000);
+    console.log(`Application is running on: ${await app.getUrl()}`);
+  } catch (error) {
+    console.error(`Error starting application: ${error}`);
+  }
 }
 bootstrap();

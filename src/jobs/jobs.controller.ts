@@ -1,6 +1,7 @@
 import {
   Controller,
   Delete,
+  Get,
   HttpCode,
   HttpStatus,
   Param,
@@ -12,17 +13,24 @@ import { JobsService } from "./jobs.service";
 export class JobsController {
   constructor(private readonly jobsService: JobsService) {}
 
-  @Post(":id/save")
+  @Post(":jobId/save")
   @HttpCode(HttpStatus.CREATED)
-  saveJob(@Param("id") jobId: string) {
-    const uesrId = "58d0816f-88d6-424a-8438-429c74f9a6e2"; // example user id
-    return this.jobsService.saveJobForUser(uesrId, jobId);
+  saveJob(@Param("jobId") jobId: string) {
+    const userId = "58d0816f-88d6-424a-8438-429c74f9a6e2"; // example user id
+    return this.jobsService.saveJobForUser(userId, jobId);
   }
 
-  @Delete(":id/save")
+  @Delete(":jobId/unsave")
   @HttpCode(HttpStatus.NO_CONTENT)
-  deleteJob(@Param("id") jobId: string) {
-    const uesrId = "58d0816f-88d6-424a-8438-429c74f9a6e2"; // example user id
-    return this.jobsService.unsaveJobForUser(uesrId, jobId);
+  deleteJob(@Param("jobId") jobId: string) {
+    const userId = "58d0816f-88d6-424a-8438-429c74f9a6e2"; // example user id
+    return this.jobsService.unsaveJobForUser(userId, jobId);
+  }
+
+  @Get("saved")
+  @HttpCode(HttpStatus.OK)
+  getSaved() {
+    const userId = "58d0816f-88d6-424a-8438-429c74f9a6e2"; // example user id
+    return this.jobsService.getSavedJobs(userId);
   }
 }
